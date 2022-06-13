@@ -1,6 +1,5 @@
 package org.launchcode.techjobs_oo;
 
-import java.lang.reflect.Field;
 
 public class Job {
 
@@ -19,7 +18,7 @@ public class Job {
     //  the 'id' field.
 
     //3.1/3.2
-    public Job(){
+    public Job() {
         id = nextId;
         nextId++;
     }
@@ -32,29 +31,35 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+
     //5
     @java.lang.Override
     public java.lang.String toString() {
-        if(name == null && employer == null && location == null && positionType == null && coreCompetency == null){
-             String id = doesNotContainAnyFieldOtherThanId();
+
+
+        if (name == null && employer == null && location == null && positionType == null && coreCompetency == null) {
+            String id = doesNotContainAnyFieldOtherThanId();
             return id;
         } else {
-            return String.format("id=%s\nname=%s\nemployer=%s\nlocation=%s\npositionType=%s\ncoreCompetency",
+
+            return String.format("id=%s\nname=%s\nemployer=%s\nlocation=%s\npositionType=%s\ncoreCompetency=%s",
                     id,
                     name == null ? DEFAULT_MESSAGE : name,
-                    employer == null ? DEFAULT_MESSAGE : employer,
-                    location == null ? DEFAULT_MESSAGE : location,
-                    positionType == null ? DEFAULT_MESSAGE : positionType,
-                    coreCompetency == null ? DEFAULT_MESSAGE : coreCompetency);
+                    employer.getValue() == null ? DEFAULT_MESSAGE : employer,
+                    location.getValue() == null ? DEFAULT_MESSAGE : location,
+                    positionType.getValue() == null ? DEFAULT_MESSAGE : positionType,
+                    coreCompetency.getValue() == null ? DEFAULT_MESSAGE : coreCompetency);
+
+
         }
 
     }
 
+
     public String doesNotContainAnyFieldOtherThanId() {
-            return "OOPS! This job does not seem to exist";
+        return "OOPS! This job does not seem to exist";
 
     }
-
 
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
